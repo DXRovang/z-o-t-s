@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'makers/index'
+  get 'makers/show'
   get 'families/index'
   get 'families/show'
   get 'categories/index'
