@@ -12,17 +12,17 @@ Rails.application.routes.draw do
     resources :instruments, only: [:new]
   end
 
-  resources :users, only: [:show] do
-    resources :instruments, only: [:new]
-  end
+  # resources :users, only: [:show] do
+  #   resources :instruments, only: [:new]
+  # end
 
-  resources :categories, only: [:index] do
-    resources :instruments, only: [:new]
-  end
+  # resources :categories, only: [:index] do
+  #   resources :instruments, only: [:new]
+  # end
 
   resources :families, only: [:index]
-  resources :categories, only: [:index, :show]
-  resources :makers, only: [:index, :show]
+  # resources :categories, only: [:index, :show]
+  # resources :makers, only: [:index, :show]
   resources :instruments, except: [:new]
 
   get '/auth/facebook/callback', to: 'sessions#create_with_fb'
