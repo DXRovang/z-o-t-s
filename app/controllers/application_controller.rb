@@ -5,5 +5,8 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:user_id])
   end
 
-  
+  def require_login
+    redirect_to "/login" if !current_user
+  end
+
 end
