@@ -8,7 +8,7 @@ module InstrumentsHelper
   end
 
   def guitar_categories
-    Category.where(id: [8...16])
+    Category.where(id: [5...12])
   end
 
   def mandolin_categories
