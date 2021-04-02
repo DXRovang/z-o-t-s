@@ -1,5 +1,3 @@
- <%
-=begin%>
  <% if instrument.errors.any? %>
   <div id="error_explanation">
     <h2>Oops!  We noticed  
@@ -56,6 +54,4 @@
 <% end %>
 
 <div><%= form.label "Description"%></div>
-  <%= form.text_area :description%> 
-<%
-=end%>
+  <%= form.text_area :description%>
