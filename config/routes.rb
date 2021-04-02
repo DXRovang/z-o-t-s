@@ -1,12 +1,42 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'makers/index'
-  get 'makers/show'
-  get 'families/index'
-  get 'families/show'
-  get 'categories/index'
-  get 'categories/show'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+  get '/signup', to: "users#new" # note: '/signup' = signup_path
+  post '/users', to: "users#create"
+  
+  get '/login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy'
+
+  resources :users, except: [:new, :create]
+
+  resources :families, only: [:index, :show] do
+    resources :categories, only: [:index]
+  end
+
+  resources :users, only: [:show] do
+    resources :instruments, only: [:new]
+  end
+
+  resources :categories, only: [:index, :show]
+  resources :makers, only: [:index, :show]
+  resources :instruments, except: [:new]
+
+  get '/auth/facebook/callback', to: 'sessions#create_with_fb'
+
+  end 
+
+
+  # namespace :admin do
+  #   resources :info, only: [:index]
+  #above is the same as
+  # scope 'admin', module: 'admin' do
+  #   #first is URL prefix, second is module name
+  #   resources :info, only: [:index]
+  # end
+  # scope '/admin' do #the 1st part of the url
+    # resources :info, only: [:index] 
+    #the 2nd part of the url (which is also the controller)
+    #the action
+  # end
+  # above is the same as
+  # get 'admin/info', to: 'info#index'
+# end
