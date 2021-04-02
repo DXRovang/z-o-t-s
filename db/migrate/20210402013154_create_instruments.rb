@@ -11,7 +11,7 @@ class CreateInstruments < ActiveRecord::Migration[6.1]
       t.string :body
       t.string :back
       t.integer :frets
-      t.boolean :for_sale
+      t.boolean :for_sale, default: true
       t.text :description
       t.integer :user_id
       t.integer :category_id
