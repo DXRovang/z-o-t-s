@@ -8,14 +8,19 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :create]
 
-  resources :families, only: [:index, :show] do
-    resources :categories, only: [:index]
+  resources :families, only: [:show] do
+    resources :instruments, only: [:new]
   end
 
   resources :users, only: [:show] do
     resources :instruments, only: [:new]
   end
 
+  resources :categories, only: [:index] do
+    resources :instruments, only: [:new]
+  end
+
+  resources :families, only: [:index]
   resources :categories, only: [:index, :show]
   resources :makers, only: [:index, :show]
   resources :instruments, except: [:new]
