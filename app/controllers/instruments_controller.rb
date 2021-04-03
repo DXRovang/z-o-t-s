@@ -28,22 +28,14 @@ class InstrumentsController < ApplicationController
     end
   
     def edit
-     
       if @instrument.user_id != current_user.id
         redirect_to instruments_path
       else
-        if (1..4).to_a.include?(@instrument.category_id.to_i)
-          @family = Family.find_by(id: 1)
-        elsif (8..15).to_a.include?(@instrument.category_id.to_i)
-          @family = Family.find_by(id: 2)
-        elsif (5..7).to_a.include?(@instrument.category_id.to_i)
-          @family = Family.find_by(id: 3)
-        end
+        @family = Family.find_by(id: @instrument.family_id)
       end
     end
   
     def update
-    
       @instrument.update(instrument_params)
       redirect_to instrument_path(@instrument)
     end
