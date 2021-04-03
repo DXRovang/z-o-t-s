@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :families, only: [:show] do
     resources :instruments, only: [:new]
+    resources :categories, only: [:index]
+
   end
 
   # resources :users, only: [:show] do
