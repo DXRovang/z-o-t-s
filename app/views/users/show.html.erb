@@ -1,27 +1,64 @@
-<h1><%= @user.username %>'s Page</h1>
-<%= @user.email %><br><br>
-<% if @user.id == session[:user_id] %>
-<button><%= link_to "Edit My Info", edit_user_path(@user) %></button>
-<%= button_to "Delete My Account", user_path(@user), method: :delete, data: { confirm: "Are You Sure?" } %>
 
-<% end %>
-<h3>Available Instruments</h3>
-
-<ul>
-  <% @user.instruments.order(:category_id).each do |instrument| %>
-    <% if instrument.for_sale == true %>
-      <li><%= link_to instrument.category.name, instrument_path(instrument) %>(<%= instrument.year %>) - 
-      <%= instrument.maker.name %></li>
-    <% end %>
-  <% end %>
-</ul>
-
-<h3>Currently Unavailable</h3>
-<ul>
-  <% @user.instruments.order(:category_id).each do |instrument| %>
-    <% if instrument.for_sale == false %>
-      <li><%= link_to instrument.category.name, instrument_path(instrument) %>(<%= instrument.year %>) - 
-      <%= instrument.maker.name %></li>
-    <% end %>
-  <% end %>
-</ul>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <h1 class="my-4"><%= @user.username %>'s Page</h1>
+          <div class="list-group">
+            <div class="list-group-item"><%= @user.email %></div>
+            <% if @user.id == session[:user_id] %>
+              <div class="list-group-item"><button><%= link_to "Edit My Info", edit_user_path(@user) %></button></div>
+              <div class="list-group-item"><%= button_to "Delete My Account", user_path(@user), method: :delete, data: { confirm: "Are You Sure?" } %></div>
+            <% end %>
+          </div>
+        </div>
+      <div class="col-lg-9">
+      <br><br>
+    <h3>Available Instruments</h3>
+      <div class="row">
+        <ul>
+          <% @user.instruments.order(:category_id).each do |instrument| %>
+            <% if instrument.for_sale == true %>
+              <div class="col-lg-4 col-md-6 mb-4" style="float: left;">
+                <div class="card h-100">
+                  <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <%= link_to instrument.category.name, instrument_path(instrument) %>
+                    </h4>
+                    <h5>
+                      <li>(<%= instrument.year %>) - 
+                      <%= instrument.maker.name %></li>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </ul>   
+      <h3>Currently Unavailable</h3>
+        <div class="row">
+          <ul>
+            <% @user.instruments.order(:category_id).each do |instrument| %>
+              <% if instrument.for_sale == false %>
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <%= link_to instrument.category.name, instrument_path(instrument) %>
+                      </h4>
+                      <h5>
+                        <li>(<%= instrument.year %>) - 
+                        <%= instrument.maker.name %></li>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </ul> 
+        </div>
+       </div>
+    </div>
+  </div>
