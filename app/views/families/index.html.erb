@@ -21,8 +21,8 @@
             <p class="card-text"></p>
           </div>
           <div class="card-footer">
-            <a href="/families/1/categories" class="btn btn-primary">Search</a>
-            <a href="/families/1/instruments/new" class="btn btn-primary">Add</a>
+            <button><%= link_to "Search", family_categories_path(1) %></button>
+            <button><%= link_to "Add", new_family_instrument_path(current_user) %></button>
           </div>
         </div>
       </div>
