@@ -66,7 +66,12 @@
             <p class="card-text"></p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Go</a>
+          <button><%= link_to "Go", user_path(current_user) %></button>
+            <%
+=begin%>
+ <a href="/users/1" class="btn btn-primary">Go</a> 
+<%
+=end%>
           </div>
         </div>
       </div>

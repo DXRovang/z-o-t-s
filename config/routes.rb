@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :families, only: [:index]
   # resources :categories, only: [:index, :show]
-  # resources :makers, only: [:index, :show]
+  resources :makers, only: [:index, :show]
   resources :instruments, except: [:new]
 
   get '/auth/facebook/callback', to: 'sessions#create_with_fb'

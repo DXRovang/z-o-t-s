@@ -19,18 +19,23 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/instruments">All Instruments
+          <button><%= link_to "All Instruments", instruments_path %></button>
+            <%
+=begin%>
+ <a class="nav-link" href="/instruments">All Instruments 
+<%
+=end%>
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/makers">Makers</a>
+          <button><%= link_to "Brands", makers_path %></button>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users">Sellers</a>
+          <button><%= link_to "Sellers", users_path %></button>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+            <%= button_to "Logout", logout_path, method: :post %>
           </li>
         </ul>
       </div>
